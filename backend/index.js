@@ -4,8 +4,11 @@ const mongoose = require('mongoose');
 const app = express();
 const port = 3000;
 
+
+require('dotenv').config();
+
 // MongoDB connection URL
-const mongoURI = 'mongodb+srv://team5:team5rocks@cluster0.i0xzt0l.mongodb.net/Forum?retryWrites=true&w=majority';
+const mongoURI = process.env.MONGODB_URI;
 
 // Connect to MongoDB
 mongoose.connect(mongoURI, {
