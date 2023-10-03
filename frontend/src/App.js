@@ -1,13 +1,18 @@
-import UserApi from "./api/UserApi";
+import React from 'react';
+import Signup from './components/Signup';
+import Login from './components/Login';
+import Forum from './components/Forum';
 
-
-function App() {
-
-  return (
-    <div className="app">
-
-    </div>
-  );
-}
+const App = () => {
+    return (
+        <div>
+            <Signup />
+            <hr />
+            <Login />
+            <hr />
+            <Forum />
+        </div>
+    );
+};
 
 export default App;
