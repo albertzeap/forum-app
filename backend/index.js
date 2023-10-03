@@ -1,10 +1,14 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const authRoutes = require('./routes/auth');
 
 const app = express();
-const port = 3000;
+const port = 5000;
+const cors = require('cors');
 
 
+app.use(cors());
+app.use(express.json());
 require('dotenv').config();
 
 // MongoDB connection URL
@@ -34,7 +38,10 @@ app.get('/', (req, res) => {
   res.send('Hello, MongoDB!');
 });
 
+app.use('/api', authRoutes);
+
 // Start the server
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
+
