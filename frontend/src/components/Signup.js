@@ -7,12 +7,19 @@ const Signup = () => {
 
     const handleSignup = async () => {
         try {
-            await axios.post('http://localhost:5000/api/signup', { username, password });
+          const response = await axios.post('http://localhost:5000/api/signup', { username, password });
+          if (response.data) {
+            // Access response data here
             alert('Signup successful!');
+          } else {
+            alert('Signup failed: No data in the response.');
+          }
         } catch (error) {
-            console.error('Error in signup:', error.response.data.error);
+          // Handle error
+          console.error('Error in signup:', error.message);
+          alert('Signup failed: An error occurred.');
         }
-    };
+      };
 
     return (
         <div>
