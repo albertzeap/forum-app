@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const authRoutes = require('./routes/auth');
+const forumRoutes = require('./routes/forum')
 
 const app = express();
 const port = 5000;
@@ -38,7 +39,7 @@ app.get('/', (req, res) => {
   res.send('Hello, MongoDB!');
 });
 
-app.use('/api', authRoutes);
+app.use('/api', express.Router().use(authRoutes, forumRoutes));
 
 // Start the server
 app.listen(port, () => {
