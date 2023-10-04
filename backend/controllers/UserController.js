@@ -6,14 +6,19 @@ const UserController = {
     getUserByUsername: async (req, res) => {
         try {
             const { username, password } = req.body;
+            console.log(req.body);
+            console.log("Username: ", username )
             const user = await User.findOne({ username });
 
             if (user && await bcrypt.compare(password, user.password)) {
                 // Generate token here (JWT)
+                
+
                 res.json({ message: 'Login successful!' });
             } else {
                 res.status(401).json({ error: 'Invalid credentials' });
             }
+          
         } catch (error) {
             console.error("Error in login: ", error);
             res.status(500).json({ error: 'Error in login' });

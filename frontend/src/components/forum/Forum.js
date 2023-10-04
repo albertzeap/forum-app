@@ -4,6 +4,7 @@ import Accordion from 'react-bootstrap/Accordion';
 import { Link } from 'react-router-dom';
 import { ForumApi } from '../../api/ForumApi';
 
+
 import "./Forum.css"
 
 export const Forum = () => {
@@ -30,13 +31,8 @@ export const Forum = () => {
                         <Accordion.Item  eventKey={i} key={category._id}>
                             <Accordion.Header><span className='fw-bold'>{category.name}</span></Accordion.Header>
                             <Accordion.Body>
-                              {category.description}
-                                {/* {category.topics.map((topic) => (
-                                    <div key={`${topic.title}-${category.id}`}>
-                                        <Link>{topic.title}</Link>
-                                        <br/>
-                                    </div>
-                                ))} */}
+                                <p> {category.description} </p>
+                                <Link></Link>
                             </Accordion.Body>
                         </Accordion.Item>
                     );
@@ -57,7 +53,7 @@ export const Forum = () => {
                   <div className="lds-grid"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
                 </div>
             ):(
-                <Container className='bg-secondary px-4 py-4'>
+                <Container className='forum-container px-4 py-4'>
                     <Accordion defaultActiveKey="0">
                     <ForumView/>
                     </Accordion>
