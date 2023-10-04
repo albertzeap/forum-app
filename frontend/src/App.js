@@ -6,11 +6,6 @@ import Signup from './components/Signup'; // Import your Signup component
 import Login from './components/Login';
 import Forum from './components/forum/Forum';
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> a457472f85140b49b4f170b0ee5864e1b1966303
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
