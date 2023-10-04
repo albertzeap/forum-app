@@ -5,6 +5,8 @@ import axios from 'axios';
 import Signup from './components/Signup'; // Import your Signup component
 import Login from './components/Login';
 import Forum from './components/forum/Forum';
+import { Discussion } from './components/Discussion';
+import { Home } from './components/Home';
 
 
 const App = () => {
@@ -35,10 +37,11 @@ const App = () => {
       <div>
         <Navbar isLoggedIn={isLoggedIn} onLogin={handleLogin} onLogout={handleLogout} />
         <Routes>
+          <Route exact path="/" element={<Home/>}/>
           <Route path="/signup" element={<Signup />} />
-          {/* Use the Login component and pass onLogin as a prop */}
           <Route path="/login" element={<Login onLogin={handleLogin} />} />
           <Route path="/forum" element={<Forum />} />
+          <Route path="/forum/category" element={<Discussion/>}/>
         </Routes>
       </div>
     </Router>
