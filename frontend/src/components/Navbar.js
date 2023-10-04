@@ -44,6 +44,11 @@ const Navbar = ({ isLoggedIn, onLogin, onLogout }) => {
             </div>
           )}
         </li>
+        {!isLoggedIn && (
+          <li>
+            <Link to="/signup">Signup</Link>
+          </li>
+        )}
         <li>
           {isLoggedIn ? (
             <button className="logout-btn" onClick={handleLogoutClick}>
@@ -55,11 +60,7 @@ const Navbar = ({ isLoggedIn, onLogin, onLogout }) => {
             </button>
           )}
         </li>
-        {!isLoggedIn && (
-          <li>
-            <Link to="/signup">Signup</Link>
-          </li>
-        )}
+        
       </ul>
       {showLoginForm && !isLoggedIn && <LoginModal onLogin={onLogin} onClose={() => setShowLoginForm(false)} />}
     </nav>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import axios from 'axios';
 import Signup from './components/Signup'; // Import your Signup component
@@ -33,7 +33,10 @@ const App = () => {
     <Router>
       <div>
         <Navbar isLoggedIn={isLoggedIn} onLogin={handleLogin} onLogout={handleLogout} />
-        {/* Other components/routes */}
+        <Routes>
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/forum" element={<Forum />} />
+        </Routes>
       </div>
     </Router>
   );
