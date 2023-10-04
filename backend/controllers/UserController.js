@@ -1,5 +1,6 @@
 const User = require("../models/User");
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 const UserController = {
 
@@ -12,9 +13,9 @@ const UserController = {
 
             if (user && await bcrypt.compare(password, user.password)) {
                 // Generate token here (JWT)
-                
+                const token = jwt.sign({ username: user.username }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-                res.json({ message: 'Login successful!' });
+                res.json({ message: 'Login successful!', token: token });
             } else {
                 res.status(401).json({ error: 'Invalid credentials' });
             }
