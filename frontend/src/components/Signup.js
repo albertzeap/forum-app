@@ -6,16 +6,6 @@ const Signup = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-<<<<<<< HEAD
-  const handleSignup = async () => {
-    try {
-      await axios.post('http://localhost:5000/api/signup', { username, password });
-      alert('Signup successful!');
-    } catch (error) {
-      console.error('Error in signup:', error.response.data.error);
-    }
-  };
-=======
     const handleSignup = async () => {
         try {
           const response = await axios.post('http://localhost:5000/api/signup', { username, password });
@@ -31,7 +21,6 @@ const Signup = () => {
           alert('Signup failed: An error occurred.');
         }
       };
->>>>>>> 88b2bf169a4bbf820740fe1481dcad2ce7b996b5
 
   return (
 
