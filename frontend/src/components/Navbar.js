@@ -38,8 +38,8 @@ const Navbar = ({ isLoggedIn, onLogin, onLogout }) => {
           </span>
           {showDropdown && (
             <div className="dropdown-content">
-              <Link to="/category1">Category 1</Link>
-              <Link to="/category2">Category 2</Link>
+              <Link to="/">Home</Link>
+              <Link to="/forum">Forum</Link>
               {/* Add more dropdown links as needed */}
             </div>
           )}
