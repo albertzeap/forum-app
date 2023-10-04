@@ -5,8 +5,6 @@ const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const { verifyToken } = require('../middleware/authMiddleware');
 
-// ... Other routes ...
-
 // Update user profile route
 router.post('/update-profile', verifyToken, async (req, res) => {
   try {

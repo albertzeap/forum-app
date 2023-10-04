@@ -54,7 +54,7 @@ const UserController = {
     updateUserByUsername: async (req, res) => {
         try {
             const { username, password } = req.body;
-            const userId = req.params.id; // Assuming you pass the user ID in the URL
+            const userId = req.params.username; // Assuming you pass the user ID in the URL
 
             // Check if the user exists
             const user = await User.findById(userId);
