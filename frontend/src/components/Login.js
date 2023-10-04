@@ -9,7 +9,6 @@ const Login = () => {
         try {
             const response = await axios.post('http://localhost:5000/api/login', { username, password });
             if (response && response.data) {
-                // Access response data here
                 alert('Login successful!');
             } else {
                 alert('Login failed: Response data is missing.');
