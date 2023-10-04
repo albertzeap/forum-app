@@ -11,7 +11,6 @@ const Login = ({ onLogin }) => {
         try {
             const response = await axios.post('http://localhost:5000/api/login', { username, password });
             if (response && response.data) {
-                // Access response data here
                 alert('Login successful!');
                 onLogin(response.data.token); // Call the onLogin prop with the token
             } else {
