@@ -1,7 +1,6 @@
 const User = require("../models/User");
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const { JWT_SECRET } = require('dotenv').config().parsed;
 
 const UserController = {
 
@@ -9,6 +8,8 @@ const UserController = {
     getUserByUsername: async (req, res) => {
         try {
             const { username, password } = req.body;
+            console.log(req.body);
+            console.log("Username: ", username )
             const user = await User.findOne({ username });
 
             if (!user) {
@@ -24,6 +25,7 @@ const UserController = {
             } else {
                 res.status(401).json({ error: 'Invalid credentials' });
             }
+          
         } catch (error) {
             console.error("Error in login: ", error);
             res.status(500).json({ error: 'Error in login' });

@@ -1,3 +1,76 @@
+h1{
+  text-align: center;
+  padding-top: 1rem;
+}
+
+.container{
+  padding: 3rem 2rem;
+}
+
+.forum-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.accordion{
+  background-color: rgb(243,245,247);
+  padding: 3rem;
+  border-radius: 2rem;
+}
+
+.accordion-header{
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+}
+.accordion-header:hover{
+  cursor: pointer;
+}
+
+.icon-container{
+ display: flex;
+ align-items: center;
+}
+
+
+.accordion-item{
+  border-top: 1px solid #959595;
+  border-bottom: 1px solid #959595;
+  background-color: rgb(243,245,247);
+  overflow: hidden;
+  padding: 0 3rem;
+
+}
+.accordion-body-visible{
+  max-height: 10rem;
+  max-width: 50rem;
+  padding: 1rem 0;
+  /* border: 1px solid gray ; */
+  -webkit-transition: max-height 0.6s ease-out; /* Safari and Chrome */
+  -moz-transition: max-height 0.6s ease-out; /* Firefox */
+  -ms-transition: max-height 0.6s ease-out; /* Internet Explorer */
+  -o-transition: max-height 0.6s ease-out; /* Opera */
+  transition: max-height 0.6s ease-out;
+}
+.accordion-body-invisible{
+  max-height: 0;
+  overflow: hidden;
+  -webkit-transition: max-height 0.6s ease-out; /* Safari and Chrome */
+  -moz-transition: max-height 0.6s ease-out; /* Firefox */
+  -ms-transition: max-height 0.6s ease-out; /* Internet Explorer */
+  -o-transition: max-height 0.6s ease-out; /* Opera */
+  transition: max-height 0.6s ease-out;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+}
+
+
+
+
 .lds-grid {
     display: inline-block;
     position: relative;

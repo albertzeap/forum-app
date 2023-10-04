@@ -18,7 +18,7 @@ export const ForumApi = {
             }
 
         } catch (error) {
-            console.error("Error in getting categories: ", error.response.data.error);
+            console.error("Error in getting categories: ", error);
         }
     }
 }
