@@ -7,10 +7,16 @@ const Login = () => {
 
     const handleLogin = async () => {
         try {
-            await axios.post('http://localhost:5000/api/login', { username, password });
-            alert('Login successful!');
+            const response = await axios.post('http://localhost:5000/api/login', { username, password });
+            if (response && response.data) {
+                // Access response data here
+                alert('Login successful!');
+            } else {
+                alert('Login failed: Response data is missing.');
+            }
         } catch (error) {
-            console.error('Error in login:', error.response.data.error);
+            console.error('Error in login:', error.message);
+            alert('Login failed: An error occurred.');
         }
     };
 
