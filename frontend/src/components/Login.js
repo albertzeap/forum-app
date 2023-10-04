@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import LoginModal from './LoginModal'; // Import the LoginModal component
 
-const Login = () => {
+const Login = ({ onLogin }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleLogin = async () => {
         try {
@@ -12,6 +14,7 @@ const Login = () => {
             if (response && response.data) {
                 // Access response data here
                 alert('Login successful!');
+                onLogin(response.data.token); // Call the onLogin prop with the token
             } else {
                 alert('Login failed: Response data is missing.');
             }
@@ -19,6 +22,14 @@ const Login = () => {
             console.error('Error in login:', error.message);
             alert('Login failed: An error occurred.');
         }
+    };
+
+    const openModal = () => {
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
     };
 
     return (
@@ -31,6 +42,11 @@ const Login = () => {
             <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
             <br />
             <button onClick={handleLogin}>Login</button>
+
+            {/* Render the LoginModal conditionally based on isModalOpen */}
+            {isModalOpen && (
+                <LoginModal onLogin={onLogin} onClose={closeModal} />
+            )}
         </div>
     );
 };

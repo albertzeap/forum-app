@@ -6,8 +6,11 @@ import Signup from './components/Signup'; // Import your Signup component
 import Login from './components/Login';
 import Forum from './components/forum/Forum';
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> a457472f85140b49b4f170b0ee5864e1b1966303
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -38,6 +41,8 @@ const App = () => {
         <Navbar isLoggedIn={isLoggedIn} onLogin={handleLogin} onLogout={handleLogout} />
         <Routes>
           <Route path="/signup" element={<Signup />} />
+          {/* Use the Login component and pass onLogin as a prop */}
+          <Route path="/login" element={<Login onLogin={handleLogin} />} />
           <Route path="/forum" element={<Forum />} />
         </Routes>
       </div>

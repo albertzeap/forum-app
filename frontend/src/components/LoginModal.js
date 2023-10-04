@@ -9,14 +9,19 @@ const LoginModal = ({ onClose, onLogin }) => {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post('http://localhost:5000/api/login', { username, password });
-      onLogin(response.data.token);
-      onClose(); // Close the modal after successful login
+        const response = await axios.post('http://localhost:5000/api/login', { username, password });
+        if (response && response.data && response.data.token) {
+            onLogin(response.data.token);
+            onClose(); // Close the modal after successful login
+            alert('Login successful!');
+        } else {
+            alert('Login failed: Response data or token is missing.');
+        }
     } catch (error) {
-      console.error('Error in login:', error.response.data.error);
+        console.error('Error in login:', error.message);
+        alert(`Login failed: ${error.response.data.error}`);
     }
-  };
-
+};
   return (
     <div className="login-modal">
       <div className="modal-content">
