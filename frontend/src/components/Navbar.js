@@ -34,7 +34,7 @@ const Navbar = ({ isLoggedIn, onLogin, onLogout }) => {
       <ul>
         <li className="dropdown">
           <span className="dropdown-btn" onClick={handleDropdownToggle}>
-            Main Menu
+            Main Menu ⮟
           </span>
           {showDropdown && (
             <div className="dropdown-content">
@@ -45,8 +45,10 @@ const Navbar = ({ isLoggedIn, onLogin, onLogout }) => {
           )}
         </li>
         {!isLoggedIn && (
-          <li>
+            <li>
+          <button className="signup-btn">
             <Link to="/signup">Signup</Link>
+          </button>
           </li>
         )}
         <li>
