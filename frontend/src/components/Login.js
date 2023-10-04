@@ -10,6 +10,7 @@ const Login = ({ onLogin }) => {
     const handleLogin = async () => {
         try {
             const response = await axios.post('http://localhost:5000/api/login', { username, password });
+            console.log({username, password})
             if (response && response.data) {
                 alert('Login successful!');
                 onLogin(response.data.token); // Call the onLogin prop with the token
