@@ -5,24 +5,17 @@ import { Link } from 'react-router-dom';
 import LoginModal from './LoginModal';
 import '../css/styles.css'; // Import your CSS file
 
-const Navbar = ({ isLoggedIn, onLogin, onLogout }) => {
+const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
   const [showLoginForm, setShowLoginForm] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
 
   const handleLoginClick = () => {
     setShowLoginForm(true);
   };
 
-  const handleLogoutClick = () => {
-    // Perform logout logic, e.g., call an API to log out
-    // Once logged out, update the state or perform any other necessary actions
-    onLogout();
-  };
-
-  const handleLogin = async () => {
-    // ... (same as before)
+  const handleLogout = () => {
+    sessionStorage.clear();
+    setIsLoggedIn(false);
   };
 
   const handleDropdownToggle = () => {
@@ -53,7 +46,7 @@ const Navbar = ({ isLoggedIn, onLogin, onLogout }) => {
         )}
         <li>
           {isLoggedIn ? (
-            <button className="logout-btn" onClick={handleLogoutClick}>
+            <button className="logout-btn" onClick={handleLogout}>
               Logout
             </button>
           ) : (
@@ -64,7 +57,7 @@ const Navbar = ({ isLoggedIn, onLogin, onLogout }) => {
         </li>
         
       </ul>
-      {showLoginForm && !isLoggedIn && <LoginModal onLogin={onLogin} onClose={() => setShowLoginForm(false)} />}
+      {showLoginForm && !isLoggedIn && <LoginModal setIsLoggedIn={setIsLoggedIn} onClose={() => setShowLoginForm(false)} />}
     </nav>
   );
 };

@@ -2,6 +2,7 @@ const User = require("../models/User");
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
+
 const UserController = {
 
     
@@ -20,7 +21,7 @@ const UserController = {
 
             if (passwordMatch) {
                 // Generate a JWT token for authenticated users
-                const token = jwt.sign({ userId: user._id }, JWT_SECRET);
+                const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
                 res.json({ message: 'Login successful!', token });
             } else {
                 res.status(401).json({ error: 'Invalid credentials' });

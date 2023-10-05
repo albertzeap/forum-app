@@ -10,16 +10,17 @@ export const ForumApi = {
         try {
             const response = await axios.get(forumURI + "/api/category");
             
-            
             if(response){
                 setCategories(response.data);
                 setTimeout(() => {
                     setIsLoading(false);
-                }, 1000)
+                }, 800)
             }
 
         } catch (error) {
             console.error("Error in getting categories: ", error);
         }
     }
+
+    
 }

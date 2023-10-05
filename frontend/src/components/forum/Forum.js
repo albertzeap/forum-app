@@ -46,7 +46,7 @@ export const Forum = () => {
                                     </h2>
                                 </div>
                                 <div className="icon-container">
-                                    {visibleCategories.includes(categories._id) ? (
+                                    {visibleCategories.includes(category._id) ? (
                                         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z"/></svg>
                                     ):(
                                         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
@@ -54,8 +54,9 @@ export const Forum = () => {
                                 </div>
                             </div>
                             <div className={visibleCategories.includes(category._id) ? "accordion-body-visible" : "accordion-body-invisible"}>
+                                <p><strong>Description</strong></p>
                                 <p> {category.description} </p>
-                                <Link href="/">See more</Link>
+                                <Link to={`/forum/category?id=${category._id}&name=${category.name}`}>See more</Link>
                             </div>
                         </div>
                     );
