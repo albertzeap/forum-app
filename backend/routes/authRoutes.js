@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt');
 const { verifyToken } = require('../middleware/authMiddleware');
 
 // Update user profile route
-router.post('/update-profile', verifyToken, async (req, res) => {
+router.post('/updateProfile', verifyToken, async (req, res) => {
   try {
     const { name, password, timezone } = req.body;
     const userId = req.user.id; // Assuming you have a user object in the request
