@@ -9,8 +9,6 @@ const UserController = {
     getUserByUsername: async (req, res) => {
         try {
             const { username, password } = req.body;
-            console.log(req.body);
-            console.log("Username: ", username )
             const user = await User.findOne({ username });
 
             if (!user) {

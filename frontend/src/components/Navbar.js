@@ -37,6 +37,14 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
             </div>
           )}
         </li>
+        <li>
+          {isLoggedIn ? (
+            <span style={{ color: 'white' }}>Welcome!</span>
+          ) : (
+            <span style={{ color: 'white' }}>Not logged in</span>
+          )}
+        </li>
+
         {!isLoggedIn && (
             <li>
           <button className="signup-btn">
