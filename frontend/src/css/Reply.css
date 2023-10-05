@@ -1,0 +1,51 @@
+.reply-outer-container{
+    margin: auto;
+    width: 50%;
+    padding: 3rem;
+}
+
+.reply-container {
+    border: 1px solid #ccc;
+    border-radius: 1rem;
+    padding: 1rem;
+    margin-bottom: 2rem;
+}
+
+.reply-content {
+    font-size: 16px;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+}
+
+.reply-metadata {
+    font-size: 12px;
+    color: #888;
+}
+
+.reply-input-container{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.reply-input{
+    margin-right: 1rem;
+}
+
+.reply-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    resize: vertical; /* Allow vertical resizing */
+    box-sizing: border-box; /* Ensure padding is included in the width */
+    margin-bottom: 16px;
+    font-size: 16px;
+    line-height: 1.4;
+  }
+  
+  .reply-input:focus {
+    outline: none;
+    border-color: rgb(76,175,80); /* Change border color on focus */
+  }
+

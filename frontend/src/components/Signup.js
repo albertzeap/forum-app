@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import '../css/Signup.css'; // Import your CSS file
 import UserApi from '../api/UserApi';
+import '../css/Signup.css'; // Import your CSS file
 
 const Signup = () => {
   const [username, setUsername] = useState('');
