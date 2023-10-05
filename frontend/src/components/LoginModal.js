@@ -1,27 +1,17 @@
 // LoginModal.js
 import React, { useState } from 'react';
-import axios from 'axios';
 import '../css/styles.css';
+import UserApi from '../api/UserApi';
 
-const LoginModal = ({ onClose, onLogin }) => {
+const LoginModal = ({ onClose, setIsLoggedIn }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const handleLogin = async () => {
-    try {
-        const response = await axios.post('http://localhost:5000/api/login', { username, password });
-        if (response && response.data && response.data.token) {
-            onLogin(response.data.token);
-            onClose(); // Close the modal after successful login
-            alert('Login successful!');
-        } else {
-            alert('Login failed: Response data or token is missing.');
-        }
-    } catch (error) {
-        console.error('Error in login:', error.message);
-        alert(`Login failed: ${error.response.data.error}`);
-    }
-};
+    const credentials = { username: username, password: password};
+    UserApi.loginUser(credentials, setIsLoggedIn);
+  };
+
   return (
     <div className="login-modal">
       <div className="modal-content">
