@@ -1,4 +1,5 @@
 const Reply = require('../models/Reply');
+const mongoose = require('mongoose');
 
 const ReplyController = {
   
@@ -17,10 +18,39 @@ const ReplyController = {
     }
   },
 
+  getRepliesByDiscussion: async (req, res) => {
+    try {
+      const discussionId = req.params.discussionId; // Access discussionId from params
+
+      console.log('Discussion id:', discussionId);
+
+      // Create a new ObjectId instance from discussionId
+      const discussionIdObjectId = mongoose.Types.ObjectId.createFromHexString(discussionId);
+
+      // Find all replies that belong to the specified discussion
+      const replies = await Reply.find({ discussion: discussionIdObjectId });
+
+      console.log('Retrieved replies:', replies);
+
+      if (replies && replies.length > 0) {
+        res.status(200).json(replies);
+      } else {
+        res.status(404).json({ message: 'No replies found for this discussion' });
+      }
+    } catch (error) {
+      console.error('Error in getting replies by discussion:', error);
+      res.status(500).json({ error: 'Error in getting replies by discussion' });
+    }
+  },
+
+
   // Get a reply by ID
   getReplyById: async (req, res) => {
     try {
-      const reply = await Reply.findById(req.params.id);
+      const replyId = req.params.id;
+      console.log(replyId)
+      const reply = await Reply.findById(replyId);
+      console.log(reply)
       if (reply) {
         res.status(200).json(reply);
       } else {

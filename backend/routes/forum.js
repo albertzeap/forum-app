@@ -18,7 +18,8 @@ router.put('/discussion/:id', DiscussionController.updateDiscussionById);
 router.delete('/discussion/:id', DiscussionController.deleteDiscussionById);
 
 router.get('/reply', ReplyController.getReplies);
-// router.get('/reply', ReplyController.getReplyById);
+router.get('/reply/:id', ReplyController.getReplyById);
+router.get('/reply/discussion/:discussionId', ReplyController.getRepliesByDiscussion)
 router.post('/reply', ReplyController.createReply);
 router.put('/reply/:id', ReplyController.updateReplyById);
 router.delete('/reply/:id', ReplyController.deleteReplyById);
