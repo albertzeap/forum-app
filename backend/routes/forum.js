@@ -11,7 +11,8 @@ router.put('/category/:id', CategoryController.updateCategoryById);
 router.delete('/category/:id', CategoryController.deleteCategoryById);
 
 router.get('/discussion', DiscussionController.getDiscussions);
-// router.get('/discussion/:id', DiscussionController.getDiscussionById);
+router.get('/discussion/category/:categoryId', DiscussionController.getDiscussionsByCategory);
+router.get('/discussion/:id', DiscussionController.getDiscussionById);
 router.post('/discussion', DiscussionController.createDiscussion);
 router.put('/discussion/:id', DiscussionController.updateDiscussionById);
 router.delete('/discussion/:id', DiscussionController.deleteDiscussionById);

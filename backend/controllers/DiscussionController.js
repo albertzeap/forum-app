@@ -1,4 +1,5 @@
 const Discussion = require('../models/Discussion');
+const mongoose = require('mongoose');
 
 const DiscussionController = {
 
@@ -20,9 +21,12 @@ const DiscussionController = {
   // Get a discussion by ID
   getDiscussionById: async (req, res) => {
     try {
-      const Discussion = await Discussion.findById(req.params.id);
-      if (Discussion) {
-        res.status(200).json(Discussion);
+      const discussionId = req.params.id; // Capture the discussion ID from the request params
+      console.log('Discussion ID:', discussionId);
+      const discussion = await Discussion.findById(discussionId);
+      console.log('Retrieved discussion:', discussion);
+      if (discussion) {
+        res.status(200).json(discussion);
       } else {
         res.status(404).json({ message: 'Discussion not found' });
       }
@@ -31,6 +35,33 @@ const DiscussionController = {
       res.status(500).json({ error: 'Error in getting discussion' });
     }
   },
+
+  // Get discussions by category
+  getDiscussionsByCategory: async (req, res) => {
+    try {
+      const categoryId = req.params.categoryId; // Correctly access categoryId from params
+  
+      console.log('Category id:', categoryId);
+      
+      // Create a new ObjectId instance from categoryId
+      const categoryIdObjectId = mongoose.Types.ObjectId.createFromHexString(categoryId);
+  
+      const discussions = await Discussion.find({ category: categoryIdObjectId }); // Use the ObjectId for querying
+  
+      console.log('Retrieved category:', discussions);
+  
+      if (discussions && discussions.length > 0) {
+        res.status(200).json(discussions);
+      } else {
+        res.status(404).json({ message: 'No discussions found for this category' });
+      }
+    } catch (error) {
+      console.error('Error in getting discussions by category:', error);
+      res.status(500).json({ error: 'Error in getting discussions by category' });
+    }
+  },
+  
+
 
   // Create a new discussion
   createDiscussion: async (req, res) => {
