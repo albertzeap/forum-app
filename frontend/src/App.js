@@ -4,9 +4,9 @@ import Navbar from './components/Navbar';
 import axios from 'axios';
 import Signup from './components/Signup'; // Import your Signup component
 
-import Forum from './components/forum/Forum';
+import { Forum } from './components/forum/Forum';
 import { Discussion } from './components/Discussion';
-import { Home } from './components/Home';
+import Home from './components/Home';
 import LoginModal from './components/LoginModal';
 
 
