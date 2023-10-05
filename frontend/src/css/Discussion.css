@@ -1,0 +1,20 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 2rem; /* Adjust as needed */
+  }
+  
+  thead {
+    background-color: #f2f2f2; /* Light gray background for the header */
+  }
+  
+  th, td {
+    padding: 1.5rem;
+    text-align: center;
+    border-bottom: 1px solid #ddd; /* Bottom border for cells */
+  }
+  
+  tr:hover {
+    background-color: #f5f5f5; /* Light background color on hover */
+    cursor: pointer;
+  }

@@ -8,6 +8,7 @@ import { Forum } from './components/forum/Forum';
 import { Discussion } from './components/Discussion';
 import Home from './components/Home';
 import LoginModal from './components/LoginModal';
+import { Reply } from './components/Reply';
 
 
 const App = () => {
@@ -23,6 +24,7 @@ const App = () => {
           <Route path="/login" element={<LoginModal/>} />
           <Route path="/forum" element={<Forum />} />
           <Route path="/forum/category" element={<Discussion/>}/>
+          <Route path="/forum/category/discussion" element={<Reply/>}/>
         </Routes>
       </div>
     </Router>
