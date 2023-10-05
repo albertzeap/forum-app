@@ -22,9 +22,7 @@ const DiscussionController = {
   getDiscussionById: async (req, res) => {
     try {
       const discussionId = req.params.id; // Capture the discussion ID from the request params
-      console.log('Discussion ID:', discussionId);
       const discussion = await Discussion.findById(discussionId);
-      console.log('Retrieved discussion:', discussion);
       if (discussion) {
         res.status(200).json(discussion);
       } else {
