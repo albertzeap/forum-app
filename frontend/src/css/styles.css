@@ -30,7 +30,7 @@
   margin-left: auto;
 }
 
-.login-btn, .logout-btn {
+.login-btn, .logout-btn .profile-edit-btn {
   background-color: #4CAF50;
   color: white;
   border: none;
@@ -38,7 +38,7 @@
   cursor: pointer;
 }
 
-.login-btn:hover, .logout-btn:hover {
+.login-btn:hover, .logout-btn:hover .profile-edit-btn:hover  {
   background-color: #45a049;
 }
 

@@ -9,7 +9,7 @@ import { Discussion } from './components/Discussion';
 import Home from './components/Home';
 import LoginModal from './components/LoginModal';
 import { Reply } from './components/Reply';
-
+import EditProfile from './components/EditProfile';
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(sessionStorage.length > 0 ? true : false);
@@ -25,6 +25,7 @@ const App = () => {
           <Route path="/forum" element={<Forum />} />
           <Route path="/forum/category" element={<Discussion/>}/>
           <Route path="/forum/category/discussion" element={<Reply/>}/>
+          <Route path="/editProfile" element={<EditProfile />} />
         </Routes>
       </div>
     </Router>
