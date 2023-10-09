@@ -12,16 +12,20 @@ const UserController = {
             const user = await User.findOne({ username });
 
             if (!user) {
+                console.log("!user");
                 return res.status(401).json({ error: 'Invalid credentials' });
             }
 
             const passwordMatch = await bcrypt.compare(password, user.password);
+            console.log(password + " " + user.password + "-> " + passwordMatch);
+
 
             if (passwordMatch) {
                 // Generate a JWT token for authenticated users
                 const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
                 res.json({ message: 'Login successful!', token });
             } else {
+                console.log("there is an error")
                 res.status(401).json({ error: 'Invalid credentials' });
             }
           
@@ -41,9 +45,10 @@ const UserController = {
             }
 
             // Hash the password before saving it in the database
-            const hashedPassword = await bcrypt.hash(password, 10);
+            // const hashedPassword = await bcrypt.hash(password, 10);
             
-            const user = new User({ username, password: hashedPassword });
+            // const user = new User({ username, password: hashedPassword });
+            const user = new User({ username, password });
             await user.save();
             res.json({ message: 'Signup successful!' });
         } catch (error) {
