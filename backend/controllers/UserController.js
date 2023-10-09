@@ -52,33 +52,65 @@ const UserController = {
         }
     },
 
-    updateUserByUsername: async (req, res) => {
+    updateUserProfile: async (req, res) => {
         try {
-            const { username, password } = req.body;
-            const userName = req.params.username; // Assuming you pass the user ID in the URL
-
-            // Check if the user exists
-            const user = await User.findByUserName(userName);
-
-            if (!user) {
-                return res.status(404).json({ error: 'User not found' });
-            }
-
-            // Update user data
-            user.username = username;
-            user.password = await bcrypt.hash(password, 10); // Hash the new password
-
-            // Save the updated user
-            await user.save();
-
-            res.json({ message: 'User updated successfully!' });
+          const {
+            displayName,
+            nickname,
+            email,
+            title,
+            userGroup,
+            avatar,
+            website,
+            socialNetworks,
+            location,
+            timezone,
+            occupation,
+            signature,
+            aboutMe,
+            password,
+          } = req.body;
+      
+          const userId = req.user.id; // Get user ID from JWT token
+      
+          // Fetch the user from the database
+          const user = await User.findById(userId);
+      
+          if (!user) {
+            return res.status(404).json({ error: 'User not found' });
+          }
+      
+          // Update the user's profile fields
+          user.displayName = displayName;
+          user.nickname = nickname;
+          user.email = email;
+          user.title = title;
+          user.userGroup = userGroup;
+          user.avatar = avatar;
+          user.website = website;
+          user.socialNetworks = socialNetworks;
+          user.location = location;
+          user.timezone = timezone;
+          user.occupation = occupation;
+          user.signature = signature;
+          user.aboutMe = aboutMe;
+      
+          // If the user is changing the password, hash and save the new password
+          if (password) {
+            const salt = await bcrypt.genSalt(10);
+            const hashedPassword = await bcrypt.hash(password, salt);
+            user.password = hashedPassword;
+          }
+      
+          // Save the updated user object
+          await user.save();
+      
+          res.json({ message: 'Profile updated successfully' });
         } catch (error) {
-            console.error("Error in update user: ", error);
-            res.status(500).json({ error: 'Error in update user' });
+          console.error('Error updating profile:', error);
+          res.status(500).json({ error: 'Profile update failed' });
         }
-    },
-
-
-}
+      }
+    };      
 
 module.exports = UserController;

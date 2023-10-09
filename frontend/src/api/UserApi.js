@@ -31,8 +31,33 @@ const UserApi = {
         console.error('Error in signup:', error);
         alert(error.response.data.error);
       }
-    }
-}
+    },
+
+    updateProfile: async (profileData) => {
+      try {
+        const token = sessionStorage.getItem('token'); // Get the token from session storage
+        if (!token) {
+          throw new Error('Token not found');
+        }
+        
+        const response = await axios.post(`http://localhost:5000/api/updateProfile`, profileData, {
+          headers: {
+            'Authorization': `Bearer ${token}`, // Attach the token to the request headers
+            
+          },
+        });
+  
+        if (response.status === 200) {
+          alert('Profile updated successfully!');
+        } else {
+          alert('Profile update failed.');
+        }
+      } catch (error) {
+        console.error('Error updating profile:', error);
+        alert('An error occurred while updating your profile.');
+      }
+    },
+  };
 
 
 export default UserApi;

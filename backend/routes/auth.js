@@ -4,11 +4,15 @@ const UserController = require('../controllers/UserController');
 const { verifyToken } = require('../middleware/authMiddleware');
 
 
+
 // Signup
 router.post('/signup', UserController.createUser);
 
 // Login
 router.post('/login', UserController.getUserByUsername);
+
+//Update profile
+router.post('/updateProfile', verifyToken, UserController.updateUserProfile);
 
 // Sample protected route
 router.get('/protected', verifyToken, (req, res) => {
