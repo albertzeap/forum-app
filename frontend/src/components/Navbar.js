@@ -58,14 +58,18 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
         )}
         <li>
           {isLoggedIn ? (
-            <>
+            <ul>
+            <li>
               <button className="profile-edit-btn" onClick={handleProfileEditClick}>
                 Edit Profile
               </button>
+            </li> 
+            <li> 
               <button className="logout-btn" onClick={handleLogout}>
                 Logout
               </button>
-            </>
+            </li>
+            </ul>
           ) : (
             <button className="login-btn" onClick={handleLoginClick}>
               Login

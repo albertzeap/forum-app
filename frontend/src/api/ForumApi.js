@@ -5,6 +5,31 @@ import axios from 'axios';
 const forumURI = "http://localhost:5000"
 
 export const ForumApi = {
+
+    createDiscussion: async (categoryId, data) => {
+        try {
+            const token = sessionStorage.getItem('token');  // Retrieve the token from local storage
+            // console.log('Token:', token);
+
+            const response = await axios.post(
+                forumURI + `/api/discussion/category/${categoryId}`,
+                data,
+                {
+                    headers: {
+                        'Authorization': `Bearer ${token}`,  // Include the Authorization header with the token
+                        'Content-Type': 'application/json',
+                    },
+                }
+            );
+
+            if (response) {
+                return response.data;
+            }
+        } catch (error) {
+            console.error('Error creating discussion:', error);
+            throw error;
+        }
+    },
     
     getCategories: async (setCategories, setIsLoading) => {
         try {

@@ -10,6 +10,7 @@ import Home from './components/Home';
 import LoginModal from './components/LoginModal';
 import { Reply } from './components/Reply';
 import EditProfile from './components/EditProfile';
+import NewThread from './components/NewThread';
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(sessionStorage.length > 0 ? true : false);
@@ -25,6 +26,7 @@ const App = () => {
           <Route path="/forum" element={<Forum />} />
           <Route path="/forum/category" element={<Discussion/>}/>
           <Route path="/forum/category/discussion" element={<Reply/>}/>
+          <Route path="/forum/new-thread" element={<NewThread />} />
           <Route path="/editProfile" element={<EditProfile />} />
         </Routes>
       </div>
