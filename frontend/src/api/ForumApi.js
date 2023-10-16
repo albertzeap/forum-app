@@ -9,8 +9,8 @@ export const ForumApi = {
     createDiscussion: async (categoryId, data) => {
         try {
             const token = sessionStorage.getItem('token');  // Retrieve the token from local storage
-            // console.log('Token:', token);
-
+            console.log('Token:', token);
+            
             const response = await axios.post(
                 forumURI + `/api/discussion/category/${categoryId}`,
                 data,
@@ -49,7 +49,15 @@ export const ForumApi = {
 
     getDiscussionByCategory: async (categoryId, setDiscussions) => {
         try {
-            const response = await axios.get(forumURI + "/api/discussion/category/" + categoryId);
+            const token = sessionStorage.getItem('token');
+            console.log('Token:', token)
+            const response = await axios.get(forumURI + "/api/discussion/category/" + categoryId,
+            {
+                headers: {
+                    'Authorization': `Bearer ${token}`,  // Include the Authorization header with the token
+                }
+            }
+            );
 
             if(response){
                 setDiscussions(response.data);
