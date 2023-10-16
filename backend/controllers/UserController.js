@@ -70,19 +70,17 @@ const UserController = {
           timezone,
           occupation,
           signature,
-          aboutMe,
-          password,
+          aboutMe
         } = req.body;
     
         // Get the JWT token from the request headers
         let token = req.headers.authorization;
-        
+        token = token.split(' ')[1];
         if (!token) {
           return res.status(403).json({ error: 'Token not provided' });
         }
-        token = token.split(' ')[1];
+        
         // Verify the token
-        console.log(token);
         jwt.verify(token, process.env.JWT_SECRET, async (err, decoded) => {
           if (err) {
             return res.status(403).json({ error: 'Invalid token' });
