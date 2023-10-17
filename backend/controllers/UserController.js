@@ -17,8 +17,6 @@ const UserController = {
             }
 
             const passwordMatch = await bcrypt.compare(password, user.password);
-            console.log(password + " " + user.password + "-> " + passwordMatch);
-
 
             if (passwordMatch) {
                 // Generate a JWT token for authenticated users

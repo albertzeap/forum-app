@@ -22,15 +22,11 @@ const ReplyController = {
     try {
       const discussionId = req.params.discussionId; // Access discussionId from params
 
-      console.log('Discussion id:', discussionId);
-
       // Create a new ObjectId instance from discussionId
       const discussionIdObjectId = mongoose.Types.ObjectId.createFromHexString(discussionId);
 
       // Find all replies that belong to the specified discussion
       const replies = await Reply.find({ discussion: discussionIdObjectId });
-
-      console.log('Retrieved replies:', replies);
 
       if (replies && replies.length > 0) {
         res.status(200).json(replies);
