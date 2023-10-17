@@ -1,9 +1,19 @@
-/* home.css */
 .home-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-  }
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-sidebar,
+.right-sidebar {
+  width: 200px; /* Adjust the width as needed */
+  padding: 1%;
+  padding-top: 1%;
+}
+
+.main-content {
+  flex-grow: 1;
+}
+
   
   .welcome-section {
     background-color: #f0f0f0;

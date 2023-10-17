@@ -38,15 +38,11 @@ const DiscussionController = {
   getDiscussionsByCategory: async (req, res) => {
     try {
       const categoryId = req.params.categoryId; // Correctly access categoryId from params
-  
-      console.log('Category id:', categoryId);
       
       // Create a new ObjectId instance from categoryId
       const categoryIdObjectId = mongoose.Types.ObjectId.createFromHexString(categoryId);
   
       const discussions = await Discussion.find({ category: categoryIdObjectId }); // Use the ObjectId for querying
-  
-      console.log('Retrieved category:', discussions);
   
       if (discussions && discussions.length > 0) {
         res.status(200).json(discussions);
@@ -61,21 +57,37 @@ const DiscussionController = {
   
 
 
-  // Create a new discussion
   createDiscussion: async (req, res) => {
     try {
-      const { title, content, author, category } = req.body;
+      // Extract necessary data from the request
+      const { title, content } = req.body;
+  
+      // Check if the user is authenticated
+      if (!req.user) {
+        return res.status(401).json({ error: 'User not authenticated' });
+      }
+  
+      // Get the user ID from the authenticated user
+      const author = req.user._id;
+  
+      // Get the category ID from the request parameters
+      const category = req.params.categoryId;
+  
+      // Create a new discussion instance
       const discussion = new Discussion({ title, content, author, category });
+  
+      // Save the discussion to the database
       await discussion.save();
+  
+      // Return the created discussion in the response
       res.status(201).json({ message: 'Discussion created!', discussion });
     } catch (error) {
+      // Handle errors
       console.error('Error in creating discussion:', error);
       res.status(500).json({ error: 'Error in creating discussion' });
     }
   },
 
-  
-  // Update a discussion by ID
   updateDiscussionById: async (req, res) => {
     try {
       const { title, content } = req.body;
