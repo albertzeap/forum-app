@@ -67,6 +67,8 @@ export const ForumApi = {
             
         } catch (error) {
             console.error("Error in creating replies: ", error);
+            console.error("Error in creating replies: ", error);
+
         }
     }
 
